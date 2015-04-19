@@ -1,6 +1,6 @@
 # Predef
 
-TODO: Write a gem description
+Shortcut for prepend-ing Module. Maybe useful for debugging.
 
 ## Installation
 
