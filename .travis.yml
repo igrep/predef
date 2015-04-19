@@ -1,0 +1,23 @@
+language: ruby
+install:
+  - gem install bundler
+  - CODECLIMATE_REPO_TOKEN=1bd238aea9e248bc8935a5d3d002c70dc613712ad621353557799bf12552e57f bundle
+rvm:
+  - ruby-head
+  - 2.2.2
+  - 2.1.6
+  - 2.0.0
+script:
+  - CODECLIMATE_REPO_TOKEN=1bd238aea9e248bc8935a5d3d002c70dc613712ad621353557799bf12552e57f bundle exec rubydoctest README.md
+notifications:
+  email:
+    recipients:
+      - whosekiteneverfly@gmail.com
+    on_success: never
+    on_failure: never
+addons:
+  code_climate:
+    repo_token: 1bd238aea9e248bc8935a5d3d002c70dc613712ad621353557799bf12552e57f
+matrix:
+  allow_failures:
+    - rvm: ruby-head
