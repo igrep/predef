@@ -8,8 +8,8 @@ Gem::Specification.new do |spec|
   spec.version       = Predef::VERSION
   spec.authors       = ["Yuji Yamamoto"]
   spec.email         = ["whosekiteneverfly@gmail.com"]
-  spec.summary       = %q{TODO: Write a short summary. Required.}
-  spec.description   = %q{TODO: Write a longer description. Optional.}
+  spec.summary       = %q{Shortcut for prepend-ing Module.}
+  spec.description   = %q{Shortcut for prepend-ing Module. Maybe useful for debugging.}
   spec.homepage      = "https://github.com/igrep/predef"
   spec.license       = "MIT"
 
