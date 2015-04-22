@@ -20,7 +20,77 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+### Example: Collect All Queries Executed in a Test
+
+Given you're using some third-party database client library like this...
+
+```ruby
+class HogeSQL::Connection
+  def execute query
+    # ...
+  end
+
+  # ...
+end
+```
+
+Imagine you want to see all `SELECT` queries and the stacktrace when executed, without any change of `HogeSQL::Connection`.
+
+```ruby
+require 'predef'
+
+Predef.predef HogeSQL::Connection, :execute do|query|
+  if query.include? 'SELECT'
+    puts query
+    pp caller
+  end
+  super # call the original query method.
+end
+
+# ... your app or some test code ...
+```
+
+Then you'd get...
+
+```ruby
+SELECT * from your_apps_table WHERE ...
+["/path/to/your_app/app/models/foo.rb:355:in `some_method_in_model'",
+ "/path/to/your_app/app/controllers/foo_controller.rb:355:in `some_action_in_controller'",
+ ...]
+
+...
+```
+
+This is just a shortcut for:
+
+```ruby
+module SomeWrapper
+  deexecute query
+    if query.include? 'SELECT'
+      puts query
+      pp caller
+    end
+    super # call the original query method.
+  end
+end
+
+HogeSQL::Connection.__send__(:prepend, SomeWrapper)
+```
+
+So you can more quickly inspect code you don't want to change directly!
+
+### More Ruby-ish Way
+
+Or would you like `using` this way?
+Though it's a bit more verbose to prepend only one method.
+
+```ruby
+using Predef::Refinements
+
+HogeSQL::Connection.predef :execute do|query|
+  # same here with the last example...
+end
+```
 
 ## Contributing
 
