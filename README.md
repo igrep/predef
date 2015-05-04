@@ -65,12 +65,12 @@ This is just a shortcut for:
 
 ```ruby
 module SomeWrapper
-  deexecute query
+  def execute
     if query.include? 'SELECT'
       puts query
       pp caller
     end
-    super # call the original query method.
+    super # call the original execute method.
   end
 end
 
