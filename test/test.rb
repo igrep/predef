@@ -37,10 +37,8 @@ example 'Predef.predef overrides another method of the class' do
   )
 end
 
-example 'Predef.unpredef get back orignal method.' do
-  Predef.unpredef Hoge, :foo2 do
-    'baz2'
-  end
+example 'Predef.unpredef gets back orignal method.' do
+  Predef.unpredef Hoge, :foo2
 
   actual = Hoge.new.foo2
   expected = 'original foo2'
