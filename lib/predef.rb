@@ -8,6 +8,10 @@ class Predef < Module
       raise ::Predef::Error, "#{klass}##{method_name} is not defined!"
     end
 
+    predef! klass, method_name, &definition
+  end
+
+  def self.predef! klass, method_name, &definition
     if defined? klass.__PREDEF__
       instance = klass.__PREDEF__
     else
