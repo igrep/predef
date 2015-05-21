@@ -22,8 +22,12 @@ class Predef < Module
   end
 
   def self.unpredef klass, method_name
-    klass.__PREDEF__.module_eval do
-      remove_method method_name
+    if defined? klass.__PREDEF__
+      klass.__PREDEF__.module_eval do
+        remove_method method_name
+      end
+    else
+      raise ::Predef::Error, "#{klass} has never been predef-ed!"
     end
   end
 
