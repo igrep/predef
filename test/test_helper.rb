@@ -17,6 +17,6 @@ def test boolean_expression, on_failure
   if boolean_expression
     puts '=> OK'.freeze
   else
-    fail "Assertion failed.\n#{on_failure}"
+    fail "Assertion failed.\n\n    ==> #{on_failure}\n\n"
   end
 end
