@@ -34,4 +34,7 @@ class Predef < Module
   module Refinements
   end
 
+  class Error < ::Exception
+  end
+
 end
