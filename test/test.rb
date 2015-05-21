@@ -9,6 +9,7 @@ class Hoge
 end
 
 example 'Predef.predef overrides a method of a class' do
+
   note 'overridden method can use super.'
   Predef.predef Hoge, :foo do|arg|
     super(arg) + ' baz'
