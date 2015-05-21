@@ -39,6 +39,18 @@ example 'Predef.predef overrides another method of the class' do
   )
 end
 
+example 'Predef.unpredef raises an error given an undefined method.' do
+  actual = error_of do
+    Predef.predef Hoge, :non_defined do
+    end
+  end
+  expected = ::Predef::Error
+  test(
+    (actual.instance_of? expected),
+    "Expected an instance of #{actual.class} to be an instance of #{expected}."
+  )
+end
+
 example 'Predef.unpredef gets back orignal method.' do
   Predef.unpredef Hoge, :foo2
 
