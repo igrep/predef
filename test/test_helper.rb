@@ -4,17 +4,18 @@ if ENV['CODECLIMATE_REPO_TOKEN']
 end
 
 def example description, &block
-  puts '--------------------------------------------------------------------------------'.freeze
-  puts "-- #{description}"
-  puts '--------------------------------------------------------------------------------'.freeze
+  puts "- #{description}"
   block.call
   puts
 end
 
-def test description, boolean_expression, on_failure
-  puts description
+def note content
+  puts "-- # #{content}"
+end
+
+def test boolean_expression, on_failure
   if boolean_expression
-    puts 'OK'.freeze
+    puts '=> OK'.freeze
   else
     fail "Assertion failed.\n#{on_failure}"
   end
