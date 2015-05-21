@@ -69,6 +69,14 @@ example 'Predef.predef raises an error given an undefined method.' do
   )
 end
 
+example 'Predef.predef! does NOT raise an error given even an undefined method.' do
+  actual = error_of do
+    Predef.predef! Hoge, :non_defined do
+    end
+  end
+  test(actual.nil?, "Expected an instance of #{actual.inspect} to nil.")
+end
+
 example 'Predef.unpredef gets back orignal method.' do
   Predef.unpredef Hoge, :foo2
 
