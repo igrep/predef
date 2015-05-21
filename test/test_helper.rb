@@ -20,3 +20,9 @@ def test boolean_expression, on_failure
     fail "Assertion failed.\n\n    ==> #{on_failure}\n\n"
   end
 end
+
+def error_of &block
+  block.call
+rescue ::Exception => e
+  return e
+end
