@@ -25,4 +25,6 @@ def error_of &block
   block.call
 rescue ::Exception => e
   return e
+else
+  return nil
 end
