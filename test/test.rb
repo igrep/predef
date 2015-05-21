@@ -39,7 +39,7 @@ example 'Predef.predef overrides another method of the class' do
   )
 end
 
-example 'Predef.unpredef raises an error given an undefined method.' do
+example 'Predef.predef raises an error given an undefined method.' do
   actual = error_of do
     Predef.predef Hoge, :non_defined do
     end
