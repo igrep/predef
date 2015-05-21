@@ -49,3 +49,17 @@ example 'Predef.unpredef get back orignal method.' do
     "Expected #{actual.inspect} to equal to #{expected.inspect}."
   )
 end
+
+example 'Predef.unpredef raises an error given a non predef-ed class.' do
+  class AnotherClass
+    def foo
+    end
+  end
+
+  actual = error_of { Predef.unpredef AnotherClass, :foo }
+  expected = ::Predef::Error
+  test(
+    (actual.instance_of? expected),
+    "Expected an instance of #{actual.class} to be an instance of #{expected}."
+  )
+end
