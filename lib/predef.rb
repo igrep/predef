@@ -21,7 +21,10 @@ class Predef < Module
     method_name
   end
 
-  def self.unpredef klass, method_name = nil
+  def self.unpredef klass, method_name
+    klass.__PREDEF__.module_eval do
+      remove_method method_name
+    end
   end
 
   def initialize klass
