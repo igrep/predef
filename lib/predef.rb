@@ -4,6 +4,10 @@ class Predef < Module
   private_class_method :new
 
   def self.predef klass, method_name, &definition
+    unless klass.public_method_defined? method_name
+      raise ::Predef::Error, "#{klass}##{method_name} is not defined!"
+    end
+
     if defined? klass.__PREDEF__
       instance = klass.__PREDEF__
     else
