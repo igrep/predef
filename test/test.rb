@@ -5,6 +5,7 @@ class Hoge
     'bar ' + arg
   end
   def foo2
+    'original foo2'
   end
 end
 
@@ -30,6 +31,19 @@ example 'Predef.predef overrides another method of the class' do
 
   actual = Hoge.new.foo2
   expected = 'baz2'
+  test(
+    (actual == expected),
+    "Expected #{actual.inspect} to equal to #{expected.inspect}."
+  )
+end
+
+example 'Predef.unpredef get back orignal method.' do
+  Predef.unpredef Hoge, :foo2 do
+    'baz2'
+  end
+
+  actual = Hoge.new.foo2
+  expected = 'original foo2'
   test(
     (actual == expected),
     "Expected #{actual.inspect} to equal to #{expected.inspect}."
