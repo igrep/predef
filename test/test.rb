@@ -9,6 +9,10 @@ class Hoge
   end
   def never_predef_ed
   end
+
+  def self.singleton_method arg
+    'singleton_bar ' + arg
+  end
 end
 
 example 'Predef.predef overrides a method of a class' do
@@ -20,6 +24,20 @@ example 'Predef.predef overrides a method of a class' do
 
   actual = Hoge.new.foo('arg')
   expected = 'bar arg baz'
+  test(
+    (actual == expected),
+    "Expected #{actual.inspect} to equal to #{expected.inspect}."
+  )
+end
+
+example 'Predef.predef overrides a singleton method of a object' do
+
+  Predef.predef Hoge.singleton_class, :singleton_method do|arg|
+    super(arg) + ' baz'
+  end
+
+  actual = Hoge.singleton_method('arg')
+  expected = 'singleton_bar arg baz'
   test(
     (actual == expected),
     "Expected #{actual.inspect} to equal to #{expected.inspect}."
