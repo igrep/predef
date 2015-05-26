@@ -7,6 +7,8 @@ class Hoge
   def foo2
     'original foo2'
   end
+  def foo3
+  end
   def never_predef_ed
   end
 
@@ -108,5 +110,26 @@ example 'Predef.unpredef raises an error given a non predef-ed method.' do
   test(
     (actual.instance_of? expected),
     "Expected an instance of #{actual.class} to be an instance of #{expected}."
+  )
+end
+
+example 'Hoge.predef raises a NoMethodError without using Predef::Refinements' do
+  actual = error_of { Hoge.predef(:foo3){ :foo3 } }
+  expected = ::NoMethodError
+  test(
+    (actual.instance_of? expected),
+    "Expected an instance of #{actual.class} to be an instance of #{expected}."
+  )
+end
+
+using ::Predef::Refinements
+
+example "Hoge.predef doesn't raise an error by using Predef::Refinements" do
+  Hoge.predef(:foo3){ :foo3 }
+  actual = Hoge.new.foo3
+  expected = :foo3
+  test(
+    (actual == expected),
+    "Expected #{actual.inspect} to equal to #{expected.inspect}."
   )
 end
