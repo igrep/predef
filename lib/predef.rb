@@ -5,7 +5,7 @@ class Predef < Module
 
   def self.predef klass, method_name, &definition
     unless klass.public_method_defined? method_name
-      raise ::Predef::Error, "#{klass}##{method_name} is not defined!"
+      raise ::Predef::Error, "#{klass}##{method_name} is not defined! Use `Predef.predef!` if you want to define a new method."
     end
 
     predef! klass, method_name, &definition
