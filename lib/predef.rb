@@ -47,6 +47,23 @@ class Predef < Module
   end
 
   module Refinements
+    refine Class do
+      def predef method_name, &block
+        ::Predef.predef(self, method_name, &block)
+      end
+
+      def predef! method_name, &block
+        ::Predef.predef!(self, method_name, &block)
+      end
+
+      def unpredef method_name
+        ::Predef.unpredef(self, method_name)
+      end
+
+      def unpredef! method_name
+        ::Predef.unpredef!(self, method_name)
+      end
+    end
   end
 
   class Error < ::Exception
