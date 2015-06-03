@@ -2,6 +2,8 @@
 
 Shortcut for prepend-ing Module. Maybe useful for debugging.
 
+[![Build Status](https://travis-ci.org/igrep/predef.svg?branch=master)](https://travis-ci.org/igrep/predef)
+
 ## Installation
 
 Add this line to your application's Gemfile:
