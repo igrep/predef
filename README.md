@@ -20,6 +20,8 @@ Or install it yourself as:
 
 ## Usage
 
+See [test/example.rb](test/example.rb) in detail.
+
 ### Example: Collect All Queries Executed in a Test
 
 Given you're using some third-party database client library like this...
