@@ -1,14 +1,14 @@
 language: ruby
 install:
   - gem install bundler
-  - CODECLIMATE_REPO_TOKEN=1bd238aea9e248bc8935a5d3d002c70dc613712ad621353557799bf12552e57f bundle
+  - bundle
 rvm:
   - ruby-head
   - 2.2.2
   - 2.1.6
   - 2.0.0
 script:
-  - CODECLIMATE_REPO_TOKEN=1bd238aea9e248bc8935a5d3d002c70dc613712ad621353557799bf12552e57f bundle exec ruby test/example.rb
+  - bundle exec ruby test/example.rb
 notifications:
   email:
     recipients:
@@ -21,3 +21,4 @@ addons:
 matrix:
   allow_failures:
     - rvm: ruby-head
+env: CODECLIMATE_REPO_TOKEN="1bd238aea9e248bc8935a5d3d002c70dc613712ad621353557799bf12552e57f"
