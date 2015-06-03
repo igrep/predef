@@ -20,8 +20,6 @@ Or install it yourself as:
 
 ## Usage
 
-See [test/example.rb](test/example.rb) in detail.
-
 ### Example: Collect All Queries Executed in a Test
 
 Given you're using some third-party database client library like this...
@@ -92,6 +90,17 @@ using Predef::Refinements
 HogeSQL::Connection.predef :execute do|query|
   # same here with the last example...
 end
+```
+
+## For more methods:
+
+See and/or execute [test/example.rb](test/example.rb):
+
+```bash
+$ git clone git@github.com:igrep/predef.git
+$ cd predef
+$ bundle
+$ bundle exec ruby test/example.rb
 ```
 
 ## Contributing
