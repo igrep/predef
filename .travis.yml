@@ -15,10 +15,6 @@ notifications:
       - whosekiteneverfly@gmail.com
     on_success: never
     on_failure: never
-addons:
-  code_climate:
-    repo_token: 1bd238aea9e248bc8935a5d3d002c70dc613712ad621353557799bf12552e57f
 matrix:
   allow_failures:
     - rvm: ruby-head
-env: CODECLIMATE_REPO_TOKEN="1bd238aea9e248bc8935a5d3d002c70dc613712ad621353557799bf12552e57f"
